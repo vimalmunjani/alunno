@@ -9,7 +9,7 @@
     "install": "npm run install:client && npm run install:server",
     "build:client": "cd client && npm run build:prod",
     "build:server": "cd server && npm run build:prod",
-    "bundle": "npm run build:client && npm run build:server",
+    "build": "npm run build:client && npm run build:server",
     "start:prod": "cd server && npm run start:prod"
   },
   "repository": {
