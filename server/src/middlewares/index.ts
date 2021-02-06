@@ -1,0 +1,1 @@
+export * as AuthValidator from './auth.middleware';

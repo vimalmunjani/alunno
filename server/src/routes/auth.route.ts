@@ -1,10 +1,12 @@
 import { Router } from 'express';
 
-import { authController } from '../controllers';
+import { AuthController } from '../controllers';
+import { AuthValidator } from '../middlewares';
 
 const router: Router = Router();
 
-router.post('/signin', authController.signin)
-    .post('/signup', authController.signup)
+router.post('/signin', AuthController.signin)
+    .post('/signup', AuthValidator.signUpValidator(), AuthController.signup)
+    .get('/check-token', AuthValidator.validateAuthToken, AuthController.checkToken)
 
 export { router as authRouter };
