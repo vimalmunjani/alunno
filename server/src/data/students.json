@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1",
+        "email": "elon.musk@tesla.com",
+        "firstName": "Elon",
+        "lastName": "Musk",
+        "gender": "Male",
+        "DOB": "28 June 1971",
+        "contact": {
+            "mobileNo": "+1 9167456998",
+            "address": "Pretoria, Transvaal, South Africa"
+        },
+        "graduationYear": 1997,
+        "course": "Bachelor of Science in Economics",
+        "grade": "A+"
+    },
+    {
+        "id": "2",
+        "email": "kalpana.chawla@nasa.com",
+        "firstName": "Kalpana",
+        "lastName": "Chawla",
+        "gender": "Female",
+        "DOB": "17 March 1962",
+        "contact": {
+            "mobileNo": "+1 8996547619",
+            "address": "Karnal, Haryana"
+        },
+        "graduationYear": 1984,
+        "course": "Master of Science in Aeronautical Engineering",
+        "grade": "A++"
+    }
+]
