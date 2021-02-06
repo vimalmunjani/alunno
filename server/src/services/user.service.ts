@@ -61,6 +61,7 @@ export const updateUser = async (user: IUser): Promise<IUser | null> => {
                 ...Users[userIndex],
                 ...user
             }
+            return Users[userIndex];
         }
         return null;
     } catch (error) {
