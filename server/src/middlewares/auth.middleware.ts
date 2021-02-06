@@ -4,7 +4,7 @@ import { AuthService } from '../services';
 
 export const signUpValidator = () => {
     return [
-        check('email').isEmail().normalizeEmail(),
+        check('email').isEmail(),
         check('password').isAlphanumeric().isLength({
             min: 8,
             max: 16
