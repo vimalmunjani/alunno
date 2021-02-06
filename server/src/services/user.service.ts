@@ -1,20 +1,17 @@
-import { IUser } from "../models/user";
+import { DeleteResult, getRepository } from "typeorm";
 
-import Users from '../data/users.json';
+import { IUser } from "../models";
+import { User } from "../entity";
 
 /**
  * Create new user
  */
 export const createUser = async (email: string, password: string): Promise<IUser> => {
     try {
-        const user: IUser = {
-            id: Users.length + 1,
-            email,
-            password,
-            isAdmin: false
-        }
-        Users.push(user);
-        return user;
+        const userRepository = getRepository(User);
+        const newUser = userRepository.create({ email, password, isAdmin: false });
+        await userRepository.save(newUser);
+        return newUser;
     } catch (error) {
         throw new Error(`Error creating user`);
     }
@@ -25,11 +22,12 @@ export const createUser = async (email: string, password: string): Promise<IUser
  */
 export const ifUserExists = async (email: string): Promise<boolean> => {
     try {
-        const user = Users.find((user) => user.email === email);
-        if (user) {
-            return true
+        const userRepository = getRepository(User);
+        const user = await userRepository.findOne({ email });
+        if (!user) {
+            return false;
         }
-        return false
+        return true;
     } catch (error) {
         throw new Error(`Error checking user existence`);
     }
@@ -38,13 +36,11 @@ export const ifUserExists = async (email: string): Promise<boolean> => {
 /**
  * Find User
  */
-export const findUser = async (email: string): Promise<IUser | null> => {
+export const findUser = async (email: string): Promise<IUser | undefined> => {
     try {
-        const user = Users.find((user) => user.email === email);
-        if (user) {
-            return user
-        }
-        return null;
+        const userRepository = getRepository(User);
+        const user = await userRepository.findOne({ email });
+        return user;
     } catch (error) {
         throw new Error(`Error finding user`);
     }
@@ -55,16 +51,26 @@ export const findUser = async (email: string): Promise<IUser | null> => {
  */
 export const updateUser = async (user: IUser): Promise<IUser | null> => {
     try {
-        const userIndex = Users.findIndex((_user) => _user.email === user.email);
-        if (userIndex !== -1) {
-            Users[userIndex] = {
-                ...Users[userIndex],
-                ...user
-            }
-            return Users[userIndex];
-        }
-        return null;
+        const userRepository = getRepository(User);
+        const studentToUpdate = await userRepository.findOne(user.id);
+        const { id, ...newUser } = user;
+        const updatedUser = await userRepository.save({ ...studentToUpdate, ...newUser });
+        return updatedUser;
+
     } catch (error) {
         throw new Error("Error updating user");
+    }
+};
+
+/**
+ * Delete User
+ */
+export const deleteUser = async (id: any): Promise<IUser | DeleteResult> => {
+    try {
+        const userRepository = getRepository(User);
+        const deletedStudent = await userRepository.delete(id);
+        return deletedStudent;
+    } catch (error) {
+        throw new Error(`Error deleting student`);
     }
 };

@@ -29,15 +29,20 @@
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.9.2",
     "jsonwebtoken": "^8.5.1",
-    "pm2": "^4.5.4"
+    "mongodb": "3.6.3",
+    "pm2": "^4.5.4",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.30"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
     "@types/body-parser": "^1.19.0",
     "@types/cors": "^2.8.9",
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.11",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/node": "^14.14.25",

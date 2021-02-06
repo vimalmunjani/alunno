@@ -1,17 +1,17 @@
-import { IStudent } from "../models/student";
+import { DeleteResult, getRepository, getMongoRepository } from "typeorm";
 
-import Students from '../data/students.json';
-
-let students = (<any>Students as Array<IStudent>);
+import { IStudent } from "../models";
+import { Student } from "../entity";
 
 /**
  * Create Student
  */
 export const createStudent = async (student: IStudent): Promise<IStudent> => {
     try {
-        students.push(student);
-        const _student: IStudent = students[students.length + 1];
-        return _student;
+        const studentRepository = getRepository(Student);
+        const newStudent = studentRepository.create(student);
+        await studentRepository.save(newStudent);
+        return newStudent;
     } catch (error) {
         throw new Error(`Error creating student`);
     }
@@ -22,6 +22,8 @@ export const createStudent = async (student: IStudent): Promise<IStudent> => {
  */
 export const getAllStudents = async (): Promise<Array<IStudent>> => {
     try {
+        const studentRepository = getRepository(Student);
+        const students = await studentRepository.find();
         return students;
     } catch (error) {
         throw new Error(`Error getting students`);
@@ -31,12 +33,10 @@ export const getAllStudents = async (): Promise<Array<IStudent>> => {
 /**
  * Get Student by Id
  */
-export const getStudentById = async (id: any): Promise<IStudent | null> => {
+export const getStudentById = async (id: any): Promise<IStudent | undefined> => {
     try {
-        const student = students.find((student) => student.id === id);
-        if (!student) {
-            return null;
-        }
+        const studentRepository = getRepository(Student);
+        const student = await studentRepository.findOne(id);
         return student;
     } catch (error) {
         throw new Error(`Error finding student`);
@@ -46,17 +46,13 @@ export const getStudentById = async (id: any): Promise<IStudent | null> => {
 /**
  * Update Student
  */
-export const updateStudent = async (student: IStudent): Promise<IStudent | null> => {
+export const updateStudent = async (student: IStudent): Promise<IStudent | undefined> => {
     try {
-        const studentIndex = students.findIndex((_student) => _student.id === student.id);
-        if (studentIndex !== -1) {
-            (<any>Students[studentIndex]) = {
-                ...Students[studentIndex],
-                ...student
-            }
-            return (<any>Students[studentIndex] as IStudent);
-        }
-        return null;
+        const studentRepository = getRepository(Student);
+        const studentToUpdate = await studentRepository.findOne(student.id);
+        const { id, ...newStudent } = student;
+        const updatedStudent = await studentRepository.save({ ...studentToUpdate, ...newStudent });
+        return updatedStudent;
     } catch (error) {
         throw new Error(`Error updating student`);
     }
@@ -65,10 +61,11 @@ export const updateStudent = async (student: IStudent): Promise<IStudent | null>
 /**
  * Delete Student
  */
-export const deleteStudent = async (id: any): Promise<boolean> => {
+export const deleteStudent = async (id: any): Promise<IStudent | DeleteResult> => {
     try {
-        students = students.filter((student) => student.id !== id)
-        return true
+        const studentRepository = getRepository(Student);
+        const deletedStudent = await studentRepository.delete(id);
+        return deletedStudent;
     } catch (error) {
         throw new Error(`Error deleting student`);
     }

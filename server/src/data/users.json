@@ -8,7 +8,7 @@
     {
         "id": "2",
         "email": "viewer@domain.com",
-        "password": "admin@123",
+        "password": "viewer@123",
         "isAdmin": false
     }
 ]
