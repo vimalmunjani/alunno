@@ -4,6 +4,7 @@
   "description": "alunno",
   "main": "index.js",
   "scripts": {
+    "preinstall": "npm install -g @angular/cli",
     "install:client": "cd client && npm install",
     "install:server": "cd server && npm install",
     "install": "npm run install:client && npm run install:server",
