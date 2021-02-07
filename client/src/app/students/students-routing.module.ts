@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { StudentsResolverService } from './services';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 import { StudentEditComponent } from './student-edit/student-edit.component';
 import { StudentListComponent } from './student-list/student-list.component';
@@ -7,18 +8,26 @@ import { StudentListComponent } from './student-list/student-list.component';
 const routes: Routes = [
   {
     path: '',
-    component: StudentListComponent
-  },
-  {
-    path: ':id',
+    resolve: {
+      dispatch: StudentsResolverService
+    },
     children: [
       {
         path: '',
-        component: StudentDetailComponent
+        component: StudentListComponent
       },
       {
-        path: 'edit',
-        component: StudentEditComponent
+        path: ':id',
+        children: [
+          {
+            path: '',
+            component: StudentDetailComponent
+          },
+          {
+            path: 'edit',
+            component: StudentEditComponent
+          }
+        ]
       }
     ]
   }

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { IStudent } from '../models/student';
+import { IStudent } from '../models';
 
 /**
  * Load Students Action

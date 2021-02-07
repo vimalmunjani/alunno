@@ -1,2 +1,4 @@
-export * as StudentsActions from './students.actions';
-export * as StudentsAPIActions from './students-api.actions';
+import * as StudentsActions from './students.actions';
+import * as StudentsAPIActions from './students-api.actions';
+
+export { StudentsActions, StudentsAPIActions };

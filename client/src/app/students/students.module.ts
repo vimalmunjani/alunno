@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { StudentsRoutingModule } from './students-routing.module';
 import { StudentListComponent } from './student-list/student-list.component';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 import { StudentEditComponent } from './student-edit/student-edit.component';
-import { StudentService } from './services/student.service';
+import { StudentService, StudentsResolverService } from './services';
+import { studentReducer, studentsFeatureKey } from './reducers';
+import { StudentsEffects } from './effects';
 
 
 @NgModule({
@@ -16,10 +21,14 @@ import { StudentService } from './services/student.service';
   ],
   imports: [
     CommonModule,
-    StudentsRoutingModule
+    HttpClientModule,
+    StudentsRoutingModule,
+    StoreModule.forFeature(studentsFeatureKey, studentReducer),
+    EffectsModule.forFeature([StudentsEffects]),
   ],
   providers: [
-    StudentService
+    StudentService,
+    StudentsResolverService
   ]
 })
 export class StudentsModule { }
