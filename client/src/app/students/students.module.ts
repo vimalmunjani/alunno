@@ -5,12 +5,11 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { StudentsRoutingModule } from './students-routing.module';
-import { StudentListComponent } from './student-list/student-list.component';
-import { StudentDetailComponent } from './student-detail/student-detail.component';
-import { StudentEditComponent } from './student-edit/student-edit.component';
+import { StudentDetailComponent, StudentEditComponent, StudentListComponent } from './pages';
 import { StudentService, StudentsResolverService } from './services';
 import { studentReducer, studentsFeatureKey } from './reducers';
 import { StudentsEffects } from './effects';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -21,6 +20,7 @@ import { StudentsEffects } from './effects';
   ],
   imports: [
     CommonModule,
+    MaterialModule,
     HttpClientModule,
     StudentsRoutingModule,
     StoreModule.forFeature(studentsFeatureKey, studentReducer),
