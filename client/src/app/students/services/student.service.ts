@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IStudent } from '../models/student';
-import { StudentConstants } from '../utils/student.constants';
+import { IStudent } from '../models';
+import { StudentConstants } from '../utils';
 
 @Injectable()
 export class StudentService {
