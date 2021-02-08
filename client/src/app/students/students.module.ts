@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -21,7 +20,6 @@ import { MaterialModule } from '../material/material.module';
   imports: [
     CommonModule,
     MaterialModule,
-    HttpClientModule,
     StudentsRoutingModule,
     StoreModule.forFeature(studentsFeatureKey, studentReducer),
     EffectsModule.forFeature([StudentsEffects]),

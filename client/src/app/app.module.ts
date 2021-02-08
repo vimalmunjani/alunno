@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { LayoutComponent } from './layout/layout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MaterialModule } from './material/material.module';
   ],
   imports: [
     BrowserModule,
+    CoreModule,
     AuthModule,
     MaterialModule,
     AppRoutingModule,
