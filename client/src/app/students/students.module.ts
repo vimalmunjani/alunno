@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -8,7 +7,7 @@ import { StudentDetailComponent, StudentEditComponent, StudentListComponent } fr
 import { StudentService, StudentsResolverService } from './services';
 import { studentReducer, studentsFeatureKey } from './reducers';
 import { StudentsEffects } from './effects';
-import { MaterialModule } from '../material/material.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -18,8 +17,7 @@ import { MaterialModule } from '../material/material.module';
     StudentEditComponent
   ],
   imports: [
-    CommonModule,
-    MaterialModule,
+    SharedModule,
     StudentsRoutingModule,
     StoreModule.forFeature(studentsFeatureKey, studentReducer),
     EffectsModule.forFeature([StudentsEffects]),
