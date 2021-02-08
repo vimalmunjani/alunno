@@ -2,7 +2,7 @@ import { Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { IStudent } from '../models';
-import { IStudentState, selectAllStudents } from '../reducers';
+import { IStudentState } from '../reducers';
 import { StudentsActions } from '../actions';
 import { Observable, of } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -14,7 +14,7 @@ export class StudentsResolverService implements Resolve<boolean> {
 
     resolve(): Observable<boolean> {
         this._store.dispatch(StudentsActions.loadStudents());
-        return of(true)
+        return of(true);
     }
 
 }

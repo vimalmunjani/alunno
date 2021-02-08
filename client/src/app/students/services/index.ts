@@ -1,2 +1,2 @@
-export * from './student.service'
-export * from './students-resolver.service'
+export * from './student.service';
+export * from './students-resolver.service';

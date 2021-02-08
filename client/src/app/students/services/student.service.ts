@@ -18,7 +18,7 @@ export class StudentService {
 
   /**
    * Create Student
-   * @param student 
+   * @param student
    */
   createStudent(student: IStudent): Observable<IStudent> {
     return this._http.post<IStudent>(StudentConstants.STUDENTS_API_PATH, student);
@@ -26,8 +26,8 @@ export class StudentService {
 
   /**
    * Update Student
-   * @param studentId 
-   * @param changes 
+   * @param studentId
+   * @param changes
    */
   updateStudent(studentId: string, changes: Partial<IStudent>): Observable<IStudent> {
     return this._http.patch<IStudent>(`${StudentConstants.STUDENTS_API_PATH}/${studentId}`, changes);
@@ -35,7 +35,7 @@ export class StudentService {
 
   /**
    * Delete Student
-   * @param studentId 
+   * @param studentId
    */
   deleteStudent(studentId: string): Observable<boolean> {
     return this._http.delete<boolean>(`${StudentConstants.STUDENTS_API_PATH}/${studentId}`);
