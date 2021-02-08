@@ -12,7 +12,7 @@ import { ICredentials } from '../models';
 export class AuthEffects {
 
     signup$ = createEffect(() =>
-        this.actions$.pipe(
+        this._actions$.pipe(
             ofType(AuthActions.signUp),
             map((action) => action.credentials),
             exhaustMap((credentials: ICredentials) =>
@@ -25,7 +25,7 @@ export class AuthEffects {
     );
 
     signin$ = createEffect(() =>
-        this.actions$.pipe(
+        this._actions$.pipe(
             ofType(AuthActions.signIn),
             map((action) => action.credentials),
             exhaustMap((credentials: ICredentials) =>
@@ -38,7 +38,7 @@ export class AuthEffects {
     );
 
     postAuthSuccess$ = createEffect(() =>
-        this.actions$.pipe(
+        this._actions$.pipe(
             ofType(AuthAPIActions.signInSuccess, AuthAPIActions.signUpSuccess),
             map((action) => action.user),
             tap((user) => {
@@ -48,7 +48,7 @@ export class AuthEffects {
         ), { dispatch: false });
 
     constructor(
-        private actions$: Actions,
+        private _actions$: Actions,
         private _authService: AuthService,
         private _router: Router,
         private _route: ActivatedRoute

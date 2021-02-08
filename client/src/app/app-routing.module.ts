@@ -12,11 +12,12 @@ const routes: Routes = [
   {
     path: '',
     canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     component: LayoutComponent,
     children: [
       {
         path: 'students',
-        canActivate: [AuthGuard],
+        canLoad: [AuthGuard],
         loadChildren: () => import('./student/students.module').then((module) => module.StudentsModule),
       }
     ]
