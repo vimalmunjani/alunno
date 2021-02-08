@@ -8,12 +8,14 @@ import { SignInComponent, SignUpComponent } from './pages';
 import { authReducer, authFeatureKey } from './reducers';
 import { AuthEffects } from './effects';
 import { SharedModule } from '../shared/shared.module';
+import { AuthFormComponent } from './components/auth-form/auth-form.component';
 
 
 @NgModule({
   declarations: [
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    AuthFormComponent
   ],
   imports: [
     SharedModule,

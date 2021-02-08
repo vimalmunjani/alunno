@@ -1,7 +1,43 @@
-<p>layout works!</p>
+<div class="layout-container full-view-container">
 
-<header> PlaceHolder for header </header>
+    <!-- TOOLBAR -->
+    <mat-toolbar color="primary" class="main-toolbar mat-elevation-z4" [class.hidden]="toggleSearch">
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <h1 class="title">Alunno</h1>
+        <button class="search-btn" mat-icon-button (click)="toggleSearchBar()">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-toolbar>
 
-<aside> PlaceHolder for sidebar </aside>
+    <!-- SEARCH BAR -->
+    <mat-toolbar class="search-bar mat-elevation-z4" [class.active]="toggleSearch">
+        <mat-toolbar-row style="padding: 0 5px;">
+            <button class="search-icon" mat-icon-button disabled>
+                <mat-icon>search</mat-icon>
+            </button>
+            <!-- SEARCH COMPONENT -->
+            <app-search></app-search>
+            <button mat-button mat-icon-button (click)="toggleSearchBar()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
 
-<router-outlet></router-outlet>
+    <!-- SIDE NAV CONATINER-->
+    <mat-sidenav-container class="sidenav-container">
+
+        <!-- LEFT SIDE NAV -->
+        <mat-sidenav #sidenav class='sidenav' [class.full-width]="mobileQuery.matches"
+            [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        </mat-sidenav>
+
+        <!-- MAIN CONTENT -->
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+
+</div>

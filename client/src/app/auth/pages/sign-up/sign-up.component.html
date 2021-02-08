@@ -1,5 +1,7 @@
-<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-    <input formControlName="email">
-    <input type="password" formControlName="password">
-    <button type="submit">Sign Up</button>
-</form>
+<div class="full-view-container">
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <input formControlName="email">
+        <input type="password" formControlName="password">
+        <button type="submit">Sign Up</button>
+    </form>
+</div>

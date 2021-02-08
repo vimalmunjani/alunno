@@ -1,0 +1,45 @@
+.layout-container {
+    display: flex;
+    flex-direction: column;
+
+    .toolbar1 {
+        position: fixed;
+        top: 0;
+        z-index: 2;
+        .search-btn {
+            margin-left: auto;
+        }
+    }
+ 
+    .main-toolbar {
+        @extend .toolbar1;
+        &.hidden{
+          opacity: 0;
+        }
+    }
+
+    .search-bar {
+        width: 0%;
+        right: 0;
+        @extend .toolbar1;
+        background: #fff;
+        &.active{
+          width: 100%;
+        }
+    }
+
+    .title {
+        margin-left: 8px;
+    }
+
+    .sidenav-container {
+        flex: 1;
+        .sidenav {
+            width: 20vw;
+            &.full-width {
+                width: 100vw
+            }
+        }
+    }
+
+}

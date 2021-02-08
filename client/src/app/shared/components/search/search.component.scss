@@ -1,3 +1,13 @@
+:host {
+    width: 100%;
+}
 .search-container {
-    
+    display: flex;
+    .search-control{
+        flex: 1;
+        font-size: 1rem;
+        border: 0;
+        outline: none;
+        padding-left: 10px;
+    }
 }
