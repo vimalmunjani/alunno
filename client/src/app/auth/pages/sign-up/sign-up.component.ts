@@ -14,7 +14,7 @@ export class SignUpComponent implements OnInit {
   public signUpForm: FormGroup;
 
   constructor(private _formBuilder: FormBuilder,
-    private _store: Store<any>) { }
+              private _store: Store<any>) { }
 
   ngOnInit(): void {
     this.signUpForm = this._formBuilder.group({
@@ -23,7 +23,7 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  signUp(): void {
+  onSubmit(): void {
     this.signUpForm.disable();
     const credentials: ICredentials = this.signUpForm.value;
     console.log('credentials', credentials);
