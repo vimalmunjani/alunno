@@ -2,7 +2,7 @@ import { HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { take, map } from 'rxjs/operators';
+import { take, map, switchMap } from 'rxjs/operators';
 import { IAuthState } from '../reducers';
 import { selectUser } from '../selectors';
 
@@ -13,20 +13,21 @@ export class AuthInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    this._store.select(selectUser).pipe(
+    return this._store.select(selectUser).pipe(
       take(1),
-      map(({ authToken }) => {
-        if (authToken) {
+      switchMap((user) => {
+        if (user?.authToken) {
           request = request.clone({
             setHeaders: {
-              Authorization: `Bearer ${authToken}`
+              Authorization: `Bearer ${user?.authToken}`
             }
           });
+          return next.handle(request);
+        } else {
+          return next.handle(request);
         }
       }),
     );
-
-    return next.handle(request);
 
   }
 
