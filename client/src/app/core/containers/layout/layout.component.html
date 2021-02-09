@@ -29,10 +29,14 @@
     <mat-sidenav-container class="sidenav-container">
 
         <!-- LEFT SIDE NAV -->
-        <mat-sidenav #sidenav class='sidenav' [class.full-width]="mobileQuery.matches"
+        <mat-sidenav #sidenav class='sidenav' [opened]="true" [class.full-width]="mobileQuery.matches"
             [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
             <div class="side-nav-content">
                 <img src="assets/images/profile.svg" width="100" height="100" alt="" class="src">
+                <div class="user-detail" *ngIf="user$ | async as user">
+                    <p> Email: {{ user?.email }} </p>
+                    <p> Admin: {{ user?.isAdmin }} </p>
+                </div>
             </div>
         </mat-sidenav>
 

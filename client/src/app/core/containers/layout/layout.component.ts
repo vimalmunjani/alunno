@@ -15,7 +15,7 @@ export class LayoutComponent implements OnInit {
   mobileQuery: MediaQueryList;
   toggleSearch: boolean = false;
 
-  user = this._store.select(selectUser);
+  user$ = this._store.select(selectUser);
 
   ngOnInit(): void {
   }
