@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material/material.module';
-import { SearchComponent } from './components/search/search.component';
+import { SearchComponent, UnderConstructionComponent } from './components';
 
 
 @NgModule({
-  declarations: [SearchComponent],
+  declarations: [SearchComponent, UnderConstructionComponent],
   imports: [
     CommonModule,
     MaterialModule
@@ -13,7 +13,8 @@ import { SearchComponent } from './components/search/search.component';
   exports: [
     CommonModule,
     MaterialModule,
-    SearchComponent
+    SearchComponent,
+    UnderConstructionComponent
   ]
 })
 export class SharedModule { }

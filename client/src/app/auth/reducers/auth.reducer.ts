@@ -8,6 +8,8 @@ export interface IAuthState {
     pending: boolean;
     user: {
         authToken: string;
+        email: string;
+        isAdmin: boolean;
     };
 }
 

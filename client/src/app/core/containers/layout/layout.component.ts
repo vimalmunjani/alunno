@@ -3,6 +3,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { Store } from '@ngrx/store';
 import { IState } from '../../reducers';
 import { SearchActions } from '../../actions';
+import { selectUser } from 'src/app/auth/selectors';
 
 @Component({
   selector: 'app-layout',
@@ -13,6 +14,8 @@ export class LayoutComponent implements OnInit {
 
   mobileQuery: MediaQueryList;
   toggleSearch: boolean = false;
+
+  user = this._store.select(selectUser);
 
   ngOnInit(): void {
   }
