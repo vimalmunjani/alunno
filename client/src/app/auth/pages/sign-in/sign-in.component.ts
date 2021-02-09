@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AuthActions } from '../../actions';
 import { ICredentials } from '../../models';
@@ -9,30 +8,13 @@ import { ICredentials } from '../../models';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent {
 
-  public signInForm: FormGroup;
-  public hidePassword: boolean = true;
+  constructor(private _store: Store<any>) { }
 
-  constructor(private _formBuilder: FormBuilder,
-    private _store: Store<any>) { }
-
-  ngOnInit(): void {
-    this.signInForm = this._formBuilder.group({
-      email: [''],
-      password: ['']
-    });
-  }
-
-  onSubmit(): void {
-    const credentials: ICredentials = this.signInForm.value;
+  onSubmit(credentials: ICredentials): void {
     console.log('credentials', credentials);
     this._store.dispatch(AuthActions.signIn({ credentials }));
-  }
-
-  toggleVisibility(event) {
-    event.preventDefault();
-    this.hidePassword = !this.hidePassword;
   }
 
 }

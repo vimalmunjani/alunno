@@ -1,0 +1,16 @@
+.auth-form-card {
+    width: 90vw;
+    padding: 25px;
+    max-width: 400px;
+
+    .auth-form {
+        display: flex;
+        flex-direction: column;
+        align-items: initial;
+        .submit-btn {
+            height: 45px;
+            font-size: large;
+            margin-top: 10px;
+        }
+    }
+}

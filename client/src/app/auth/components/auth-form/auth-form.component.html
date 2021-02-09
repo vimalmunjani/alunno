@@ -1,1 +1,35 @@
-<p>auth-form works!</p>
+<mat-card class="auth-form-card">
+    <form [formGroup]="authForm" class="auth-form">
+
+        <!-- FOOTER -->
+        <ng-content select=".auth-header">
+        </ng-content>
+
+        <!-- EMAIL -->
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Email">
+            <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        <!-- PASSWORD -->
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Password</mat-label>
+            <input [type]="hidePassword ? 'password' : 'text'" matInput formControlName="password"
+                placeholder="Password">
+            <button mat-icon-button matSuffix (click)="toggleVisibility($event)" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hidePassword">
+                <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <!-- SUBMIT -->
+        <button color="primary" mat-raised-button class="submit-btn" [disabled]="authForm.invalid && authForm.dirty"
+            (click)="onSubmit($event)">{{actionTitle}}</button>
+
+        <!-- FOOTER -->
+        <ng-content select=".auth-footer">
+        </ng-content>
+
+    </form>
+</mat-card>

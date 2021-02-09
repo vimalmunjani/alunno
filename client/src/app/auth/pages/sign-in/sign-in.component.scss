@@ -1,5 +1,17 @@
-.auth-form-card {
-    width: 40vw;
-    height: 50vh;
-    padding: 2%
+.sign-in-container {
+    
+    .title {
+        font-size: xxx-large;
+        padding: 10px 0px;
+    }
+
+    .subtitle {
+        font-size: xx-large;
+        padding: 0px 0px 10px 0px;
+    }
+
+    .auth-footer {
+        padding-top: 25px;
+        padding-left: 5px;
+    }
 }

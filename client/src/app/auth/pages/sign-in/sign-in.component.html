@@ -1,28 +1,11 @@
-<div class="full-view-container centered-content">
-    <mat-card class="auth-form-card">
-        <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
-
-            <!-- EMAIL -->
-            <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Email</mat-label>
-                <input matInput formControlName="email" placeholder="Email">
-                <mat-icon matSuffix>email</mat-icon>
-            </mat-form-field>
-
-            <!-- PASSWORD -->
-            <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Password</mat-label>
-                <input [type]="hidePassword ? 'password' : 'text'" matInput formControlName="password"
-                    placeholder="Password">
-                <button mat-icon-button matSuffix (click)="toggleVisibility($event)" [attr.aria-label]="'Hide password'"
-                    [attr.aria-pressed]="hidePassword">
-                    <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-            </mat-form-field>
-
-            <!-- SUBMIT -->
-            <button type="submit" color="primary" mat-raised-button>Sign In</button>
-
-        </form>
-    </mat-card>
+<div class="full-view-container centered-content sign-in-container">
+    <app-auth-form actionTitle="Sign Up" (submit)="onSubmit($event)">
+        <div class="auth-header">
+            <h1 class="title">Alunno</h1>
+            <h1 class="subtitle">Sign In</h1>
+        </div>
+        <div class="auth-footer">
+            <p class="link">Don't have an account?> <a routerLink="/signup">Sign Up</a></p>
+        </div>
+    </app-auth-form>
 </div>
