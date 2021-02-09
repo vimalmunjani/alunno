@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StudentsResolverService } from './services';
-import { StudentDetailComponent, StudentEditComponent, StudentListComponent } from './pages';
+import { StudentDetailComponent, StudentEditComponent, StudentListComponent } from './containers';
 
 const routes: Routes = [
   {

@@ -24,7 +24,6 @@ export class SearchComponent implements AfterViewInit {
         distinctUntilChanged()
       )
       .subscribe((query) => {
-        console.log('query', query)
         this.queryChange.emit(query);
       })
   }

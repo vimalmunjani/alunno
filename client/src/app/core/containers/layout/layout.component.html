@@ -6,7 +6,7 @@
             <mat-icon>menu</mat-icon>
         </button>
         <h1 class="title">Alunno</h1>
-        <button class="search-btn" mat-icon-button (click)="toggleSearchBar()">
+        <button class="search-btn" mat-icon-button (click)="openSearchBar()">
             <mat-icon>search</mat-icon>
         </button>
     </mat-toolbar>
@@ -18,8 +18,8 @@
                 <mat-icon>search</mat-icon>
             </button>
             <!-- SEARCH COMPONENT -->
-            <app-search></app-search>
-            <button mat-button mat-icon-button (click)="toggleSearchBar()">
+            <app-search (queryChange)="onQueryChange($event)"></app-search>
+            <button mat-button mat-icon-button (click)="closeSearchBar()">
                 <mat-icon>close</mat-icon>
             </button>
         </mat-toolbar-row>

@@ -1,12 +1,14 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../auth/services';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [],
   imports: [
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [
     {

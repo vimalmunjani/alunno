@@ -3,7 +3,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { StudentsRoutingModule } from './students-routing.module';
-import { StudentDetailComponent, StudentEditComponent, StudentListComponent } from './pages';
+import { StudentDetailComponent, StudentEditComponent, StudentListComponent } from './containers';
 import { StudentService, StudentsResolverService } from './services';
 import { studentReducer, studentsFeatureKey } from './reducers';
 import { StudentsEffects } from './effects';
