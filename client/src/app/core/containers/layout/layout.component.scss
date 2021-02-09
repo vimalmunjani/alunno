@@ -30,16 +30,29 @@
 
     .title {
         margin-left: 8px;
+        outline: none;
     }
 
     .sidenav-container {
         flex: 1;
         .sidenav {
-            width: 20vw;
+            width: 25vw;
             &.full-width {
                 width: 100vw
             }
         }
     }
+
+    .side-nav-content {
+        margin-top: 100px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        .user-detail {
+            margin-top: 10px;
+        }
+    }    
 
 }

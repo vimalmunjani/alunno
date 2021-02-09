@@ -16,8 +16,8 @@ export const signin = async (request: Request, response: Response) => {
             throw new Error(`User not found`);
         }
         await AuthService.matchPassword(password, user.password);
-        const authToken = await AuthService.signJWTToken({ email: user.email });
-        return response.status(200).json({ authToken });
+        const authToken = await AuthService.signJWTToken({ email: user.email, isAdmin: user.isAdmin });
+        return response.status(200).json({ authToken, email: user.email, isAdmin: user.isAdmin });
     } catch (error) {
         return response.status(401).json({ message: `Invalid Email/password` });
     }
@@ -44,7 +44,8 @@ export const signup = async (request: Request, response: Response) => {
     try {
         const passwordHash = await AuthService.hashPassword(password);
         const user = await UserService.createUser(email, passwordHash);
-        return response.status(201).json(user);
+        const authToken = await AuthService.signJWTToken({ email: user.email, isAdmin: user.isAdmin });
+        return response.status(201).json({ authToken, email: user.email, isAdmin: user.isAdmin });
     } catch (error) {
         return response.status(500).json({ message: `Something went wrong` });
     }

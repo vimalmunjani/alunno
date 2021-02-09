@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/services';
+import { NotFoundComponent } from './core/components';
 import { LayoutComponent } from './core/containers/layout/layout.component';
 
 const routes: Routes = [
@@ -20,6 +21,10 @@ const routes: Routes = [
         loadChildren: () => import('./students/students.module').then((module) => module.StudentsModule),
       }
     ]
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 
