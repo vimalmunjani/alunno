@@ -13,7 +13,6 @@ export class SignInComponent {
   constructor(private _store: Store<any>) { }
 
   onSubmit(credentials: ICredentials): void {
-    console.log('credentials', credentials);
     this._store.dispatch(AuthActions.signIn({ credentials }));
   }
 

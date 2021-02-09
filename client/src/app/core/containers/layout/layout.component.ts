@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { Store } from '@ngrx/store';
+import { IState } from '../../reducers';
+import { SearchActions } from '../../actions';
 
 @Component({
   selector: 'app-layout',
@@ -14,12 +17,22 @@ export class LayoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  constructor(mediaMatcher: MediaMatcher) {
+  constructor(mediaMatcher: MediaMatcher,
+    private _store: Store<IState>) {
     this.mobileQuery = mediaMatcher.matchMedia('(max-width: 600px)');
   }
 
-  toggleSearchBar() {
-    this.toggleSearch = !this.toggleSearch;
+  openSearchBar() {
+    this.toggleSearch = true;
+  }
+
+  closeSearchBar() {
+    this.toggleSearch = false;
+    this._store.dispatch(SearchActions.clearSearch());
+  }
+
+  onQueryChange(query: string) {
+    this._store.dispatch(SearchActions.search({ query }));
   }
 
 }

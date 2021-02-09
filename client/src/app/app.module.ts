@@ -12,6 +12,7 @@ import { LayoutComponent } from './core/containers';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { rootReducers } from './core/reducers';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     AuthModule,
     AppRoutingModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(rootReducers),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     BrowserAnimationsModule
