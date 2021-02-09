@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { IStudent } from '../../models';
 import { IStudentState } from '../../reducers';
 import { selectAllStudents } from '../../selectors';
 
@@ -11,7 +13,8 @@ import { selectAllStudents } from '../../selectors';
 })
 export class StudentListComponent implements OnInit {
 
-  public students$ = this._store.select(selectAllStudents);
+  public displayedColumns: string[] = ['firstName', 'lastName', 'gender', 'DOB'];
+  public students$: Observable<IStudent[]> = this._store.select(selectAllStudents);
 
   constructor(private _store: Store<IStudentState>,
     private _router: Router,

@@ -1,7 +1,11 @@
-<div class="full-view-container">
-    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-        <input formControlName="email">
-        <input type="password" formControlName="password">
-        <button type="submit">Sign Up</button>
-    </form>
+<div class="full-view-container centered-content sign-up-container">
+    <app-auth-form actionTitle="Sign Up" (submit)="onSubmit($event)">
+        <div class="auth-header">
+            <h1 class="title">Alunno</h1>
+            <h1 class="subtitle">Sign In</h1>
+        </div>
+        <div class="auth-footer">
+            <p class="link">Already have an account?> <a routerLink="/signin">Sign In</a></p>
+        </div>
+    </app-auth-form>
 </div>
