@@ -1,5 +1,28 @@
-<form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
-    <input formControlName="email">
-    <input type="password" formControlName="password">
-    <button type="submit">Sign In</button>
-</form>
+<div class="full-view-container centered-content">
+    <mat-card class="auth-form-card">
+        <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+
+            <!-- EMAIL -->
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" placeholder="Email">
+                <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+
+            <!-- PASSWORD -->
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Password</mat-label>
+                <input [type]="hidePassword ? 'password' : 'text'" matInput formControlName="password"
+                    placeholder="Password">
+                <button mat-icon-button matSuffix (click)="toggleVisibility($event)" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hidePassword">
+                    <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <!-- SUBMIT -->
+            <button type="submit" color="primary" mat-raised-button>Sign In</button>
+
+        </form>
+    </mat-card>
+</div>

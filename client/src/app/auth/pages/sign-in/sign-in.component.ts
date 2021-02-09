@@ -12,9 +12,10 @@ import { ICredentials } from '../../models';
 export class SignInComponent implements OnInit {
 
   public signInForm: FormGroup;
+  public hidePassword: boolean = true;
 
   constructor(private _formBuilder: FormBuilder,
-              private _store: Store<any>) { }
+    private _store: Store<any>) { }
 
   ngOnInit(): void {
     this.signInForm = this._formBuilder.group({
@@ -24,10 +25,14 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.signInForm.disable();
     const credentials: ICredentials = this.signInForm.value;
     console.log('credentials', credentials);
     this._store.dispatch(AuthActions.signIn({ credentials }));
+  }
+
+  toggleVisibility(event) {
+    event.preventDefault();
+    this.hidePassword = !this.hidePassword;
   }
 
 }
