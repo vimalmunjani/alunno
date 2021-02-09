@@ -4,11 +4,11 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { AuthRoutingModule } from './auth-routing.module';
-import { SignInComponent, SignUpComponent } from './pages';
+import { SignInComponent, SignUpComponent } from './containers';
 import { authReducer, authFeatureKey } from './reducers';
 import { AuthEffects } from './effects';
 import { SharedModule } from '../shared/shared.module';
-import { AuthFormComponent } from './components/auth-form/auth-form.component';
+import { AuthFormComponent } from './components';
 
 
 @NgModule({
